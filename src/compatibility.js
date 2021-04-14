@@ -30,7 +30,24 @@ export function measureDistances(segments, token, shape, gridSpaces=true, option
 		return distances.concat(terrainRuler.measureDistances(newSegments, opts));
 	}
 	else {
-		return canvas.grid.measureDistances(segments, options);
+		return canvas.grid.measureDistances(segments, opts);
 	}
 }
 
+export function checkDependencies() {
+	if (!game.modules.get("socketlib")?.active) {
+		console.error("Drag Ruler | The `socketlib` module isn't enabled, but it's required for Drag Ruler to operate properly.");
+		if (game.user.isGM) {
+			new Dialog({
+				title: game.i18n.localize("drag-ruler.dependencies.socketlib.title"),
+				content: `<h2>${game.i18n.localize("drag-ruler.dependencies.socketlib.title")}</h2><p>${game.i18n.localize("drag-ruler.dependencies.socketlib.text")}</p>`,
+				buttons: {
+					ok: {
+						icon: '<i class="fas fa-check"></i>',
+						label: game.i18n.localize("drag-ruler.dependencies.ok")
+					}
+				},
+			}).render(true);
+		}
+	}
+}

@@ -1,5 +1,12 @@
 {
 	"drag-ruler": {
+		"dependencies": {
+			"ok": "OK",
+			"socketlib": {
+				"title": "Socketlib Modul fehlt",
+				"text": "Drag Ruler benötigt das socketlib-Modul, um korrekt zu funktionieren. Bitte aktiviere das socketlib-Modul in dieser Welt."
+			}
+		},
 		"genericSpeedProvider": {
 			"settings": {
 				"dashMultiplier": {
@@ -20,6 +27,10 @@
 			"alwaysShowSpeedForPCs": {
 				"name": "Geschwindigkeit von Spielercharakteren für jeden anzeigen",
 				"hint": "Wenn diese Einstellung aktiviert ist wird die Färbung der hervorgehobenen Felder bei Spielercharakteren allen Spielern angezeigt, selbst wenn diese keinen Zugriff auf den Charakterbogen haben."
+			},
+			"enableMovementHistory": {
+				"name": "Bewegungsverlauf während des Kampfes aktivieren",
+				"hint": "Wenn diesen Option aktiviert ist merkt sich Drag Ruler die Bewegungen, die während einer Runde eines Kampfes gemacht wurden und zeigt diese an, wenn das Token weiterbewegt wird."
 			},
 			"showGMRulerToPlayers": {
 				"name": "Lineal des Sipelleiters bei Spielern anzeigen",

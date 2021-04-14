@@ -1,5 +1,12 @@
 {
 	"drag-ruler": {
+		"dependencies": {
+			"ok": "OK",
+			"socketlib": {
+				"title": "Socketlib Module Missing",
+				"text": "Drag Ruler requires the socketlib module to work properly. Please activate the socketlib module in this world."
+			}
+		},
 		"genericSpeedProvider": {
 			"settings": {
 				"dashMultiplier": {
@@ -20,6 +27,10 @@
 			"alwaysShowSpeedForPCs": {
 				"name": "Show PC speed to everyone",
 				"hint": "If enabled the coloring based on actor speed for player characters will shown to everyone, even if they don't have observer permission for the character sheet."
+			},
+			"enableMovementHistory": {
+				"name": "Enable movement history during combat",
+				"hint": "If enabled, Drag Ruler will remember the path a token took during it's turn in combat and will display it when you pick the token back up."
 			},
 			"showGMRulerToPlayers": {
 				"name": "Show GM ruler to players",

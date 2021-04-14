@@ -1,7 +1,7 @@
 "use strict"
 
 import {currentSpeedProvider, getMovedDistanceFromToken, getRangesFromSpeedProvider, getUnreachableColorFromSpeedProvider, initApi, registerModule, registerSystem} from "./api.js"
-import {getHexSizeSupportTokenGridCenter} from "./compatibility.js"
+import {checkDependencies, getHexSizeSupportTokenGridCenter} from "./compatibility.js";
 import {moveTokens, onMouseMove} from "./foundry_imports.js"
 import {performMigrations} from "./migration.js"
 import {DragRulerRuler} from "./ruler.js";
@@ -27,6 +27,7 @@ Hooks.once("init", () => {
 
 Hooks.once("ready", () => {
 	performMigrations()
+	checkDependencies();
 	Hooks.callAll("dragRuler.ready", SpeedProvider)
 })
 
@@ -122,7 +123,8 @@ function onTokenLeftDragStart(event) {
 	ruler.clear();
 	ruler._state = Ruler.STATES.STARTING;
 	ruler.rulerOffset = {x: tokenCenter.x - event.data.origin.x, y: tokenCenter.y - event.data.origin.y}
-	ruler.dragRulerAddWaypointHistory(getMovementHistory(this));
+	if (game.settings.get(settingsKey, "enableMovementHistory"))
+		ruler.dragRulerAddWaypointHistory(getMovementHistory(this));
 	ruler.dragRulerAddWaypoint(tokenCenter, false);
 }
 
